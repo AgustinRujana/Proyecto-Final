@@ -2,7 +2,8 @@
 import express from 'express'
 
 const app = require('express')()
-const fs = require('fs')
+const carritoRoutes = require('./routes/carrito')
+const productosRoutes = require('./routes/productos')
 
 //Port
 const port: number = 8080
@@ -10,8 +11,8 @@ const port: number = 8080
 app.use(express.json)
 
 //Routes
-app.use('/productos', require('./routes/productos'))
-app.use('/carrito', require('./routes/carrito'))
+carritoRoutes(app)
+productosRoutes(app)
 
 //Exits
 app.listen(port, () => {
